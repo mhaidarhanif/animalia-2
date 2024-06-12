@@ -7,14 +7,14 @@ Animalia API for listing various animals.
 - Production: <https://animalia-2.haidar.dev>
 - Local: <http://localhost:3000>
 
-| Endpoint       | HTTP     | Description             |
-| -------------- | -------- | ----------------------- |
-| `/animals`     | `GET`    | Get all animals         |
-| `/animals/:id` | `GET`    | Get one animal by id    |
-| `/animals`     | `POST`   | Add new animal          |
-| `/animals`     | `DELETE` | Delete all animals      |
-| `/animals/:id` | `DELETE` | Delete one animal by id |
-| `/animals/:id` | `PUT`    | Update one animal by id |
+| Endpoint       | HTTP     | Description             | Implemented |
+| -------------- | -------- | ----------------------- | ----------- |
+| `/animals`     | `GET`    | Get all animals         | ✅          |
+| `/animals/:id` | `GET`    | Get one animal by id    | ✅          |
+| `/animals`     | `POST`   | Add new animal          | ✅          |
+| `/animals`     | `DELETE` | Delete all animals      | ✅          |
+| `/animals/:id` | `DELETE` | Delete one animal by id | ✅          |
+| `/animals/:id` | `PUT`    | Update one animal by id | ✅          |
 
 ## Getting Started
 

@@ -1,10 +1,10 @@
-type Animal = {
+export type Animal = {
   id: number;
   name: string;
   habitat: string;
-  diet: string;
-  lifespan: string;
-  conservationStatus: string;
+  diet?: string;
+  lifespan?: string;
+  conservationStatus?: string;
 };
 
 export const dataAnimals: Animal[] = [

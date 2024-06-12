@@ -1,6 +1,8 @@
 import { Hono } from "hono";
 
-import { dataAnimals } from "./data/animals";
+import { type Animal, dataAnimals } from "./data/animals";
+
+let animals = dataAnimals;
 
 const app = new Hono();
 
@@ -12,23 +14,110 @@ app.get("/", (c) => {
 });
 
 app.get("/animals", (c) => {
-  return c.json(dataAnimals);
+  if (animals.length <= 0) {
+    return c.json({
+      message: "There is no animals data",
+    });
+  }
+
+  return c.json(animals);
 });
 
 app.get("/animals/:id", (c) => {
   const id = Number(c.req.param("id"));
 
   if (!id) {
-    return c.json({ message: "There is no ID" });
+    return c.json({ message: "There is no animal ID" });
   }
 
-  const animal = dataAnimals.find((animal) => animal.id === id);
+  const animal = animals.find((animal) => animal.id === id);
 
   if (!animal) {
     return c.json({ message: "Animal not found" });
   }
 
   return c.json(animal);
+});
+
+app.delete("/animals", (c) => {
+  animals = [];
+
+  console.log(animals);
+
+  return c.json({
+    message: "All animals data have been deleted",
+  });
+});
+
+app.delete("/animals/:id", (c) => {
+  const id = Number(c.req.param("id"));
+
+  if (!id) {
+    return c.json({ message: "There is no animal ID" });
+  }
+
+  const animal = animals.find((animal) => animal.id === id);
+
+  if (!animal) {
+    return c.json({ message: "Animal to be deleted not found" });
+  }
+
+  animals = animals.filter((animal) => animal.id !== id);
+
+  return c.json({
+    message: `Animal with ID ${id} has been deleted`,
+    deletedAnimal: animal,
+  });
+});
+
+app.post("/animals", async (c) => {
+  const body = await c.req.json();
+
+  const newAnimal: Animal = {
+    id: animals[animals.length - 1].id + 1,
+    name: body.name,
+    habitat: body.habitat,
+  };
+
+  const updatedAnimals = [...animals, newAnimal];
+
+  animals = updatedAnimals;
+
+  return c.json(newAnimal);
+});
+
+app.put("/animals/:id", async (c) => {
+  const id = Number(c.req.param("id"));
+
+  if (!id) {
+    return c.json({ message: "There is no animal ID" });
+  }
+
+  const animal = animals.find((animal) => animal.id === id);
+
+  if (!animal) {
+    return c.json({ message: "Animal not found" });
+  }
+
+  const body = await c.req.json();
+
+  const newAnimal: Animal = {
+    id: animal.id,
+    name: body.name,
+    habitat: body.habitat,
+  };
+
+  const updatedAnimals = animals.map((animal) => {
+    if (animal.id === id) {
+      return newAnimal;
+    } else {
+      return animal;
+    }
+  });
+
+  animals = updatedAnimals;
+
+  return c.json(newAnimal);
 });
 
 console.log("🐾Animalia API is running");
