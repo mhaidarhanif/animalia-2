@@ -31,4 +31,6 @@ app.get("/animals/:id", (c) => {
   return c.json(animal);
 });
 
+console.log("🐾Animalia API is running");
+
 export default app;
