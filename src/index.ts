@@ -120,6 +120,14 @@ app.put("/animals/:id", async (c) => {
   return c.json(newAnimal);
 });
 
+app.post("/animals/seed", async (c) => {
+  animals = dataAnimals;
+
+  return c.json({
+    message: "Many animals data has been seeded.",
+  });
+});
+
 console.log("🐾Animalia API is running");
 
 export default app;
