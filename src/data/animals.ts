@@ -1,17 +1,25 @@
 export type Animal = {
   id: number;
   name: string;
-  habitat: string;
   diet?: string;
   lifespan?: string;
   conservationStatus?: string;
+  habitats: Habitat[];
+};
+
+export type Habitat = {
+  id: number;
+  name: string;
 };
 
 export const dataAnimals: Animal[] = [
   {
     id: 1,
     name: "Bear",
-    habitat: "Forests, mountains",
+    habitats: [
+      { id: 10, name: "Forests" },
+      { id: 11, name: "Mountains" },
+    ],
     diet: "Omnivore",
     lifespan: "20-30 years",
     conservationStatus: "Least Concern",
@@ -19,7 +27,7 @@ export const dataAnimals: Animal[] = [
   {
     id: 2,
     name: "Cat",
-    habitat: "Various (domesticated)",
+    habitats: [{ id: 12, name: "Various (domesticated)" }],
     diet: "Carnivore",
     lifespan: "12-20 years",
     conservationStatus: "Domesticated",
@@ -27,7 +35,7 @@ export const dataAnimals: Animal[] = [
   {
     id: 3,
     name: "Dog",
-    habitat: "Various (domesticated)",
+    habitats: [{ id: 12, name: "Various (domesticated)" }],
     diet: "Omnivore",
     lifespan: "10-13 years",
     conservationStatus: "Domesticated",
@@ -35,7 +43,10 @@ export const dataAnimals: Animal[] = [
   {
     id: 4,
     name: "Elephant",
-    habitat: "Grasslands, forests",
+    habitats: [
+      { id: 10, name: "Forests" },
+      { id: 11, name: "Grasslands" },
+    ],
     diet: "Herbivore",
     lifespan: "60-70 years",
     conservationStatus: "Endangered",

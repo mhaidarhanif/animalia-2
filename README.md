@@ -17,6 +17,10 @@ Animalia API for listing various animals.
 | `/animals/:id`  | `PUT`    | Update one animal by id | ✅          |
 | `/animals/seed` | `POST`   | Seed many animals       | ✅          |
 
+## ERD
+
+![ERD](./assets/erd.svg)
+
 ## Getting Started
 
 To install dependencies:
