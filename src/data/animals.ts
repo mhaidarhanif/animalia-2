@@ -4,7 +4,7 @@ export type Animal = {
   diet?: string;
   lifespan?: string;
   conservationStatus?: string;
-  habitats: Habitat[];
+  habitats?: Habitat[];
 };
 
 export type Habitat = {

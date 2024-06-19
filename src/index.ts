@@ -76,7 +76,7 @@ app.post("/animals", async (c) => {
   const newAnimal: Animal = {
     id: animals[animals.length - 1].id + 1,
     name: body.name,
-    habitat: body.habitat,
+    // habitat: body.habitat,
   };
 
   const updatedAnimals = [...animals, newAnimal];
@@ -104,7 +104,7 @@ app.put("/animals/:id", async (c) => {
   const newAnimal: Animal = {
     id: animal.id,
     name: body.name,
-    habitat: body.habitat,
+    // habitat: body.habitat,
   };
 
   const updatedAnimals = animals.map((animal) => {
