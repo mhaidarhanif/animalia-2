@@ -1,6 +1,7 @@
 export type Animal = {
   id: number;
   name: string;
+  speed?: number; // km/h
   diet?: string;
   lifespan?: string;
   conservationStatus?: string;
